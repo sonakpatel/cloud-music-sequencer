@@ -269,25 +269,29 @@ var previewPlaying = false;
 var previewSound;
 
 function playPreview(id) {
-	if(previewPlaying) {
-		previewSound.stop();
-	    $('.preview').css('background','url(../images/play_normal.png) no-repeat');
-		previewPlaying = false;
-		return;
-	} 
-	if (!stopped) {
-		alert("Please stop main playback (by pressing spacebar) to preview the sample");
-	} else {
-		previewPlaying = true;
+    if(previewPlaying) {
+        previewSound.stop();
+        $('.preview').css('background','url(../images/play_normal.png) no-repeat');
+        previewPlaying = false;
+        return;
+    }
+    if (!stopped) {
+        alert("Please stop main playback (by pressing spacebar) to preview the sample");
+    } else {
+        previewPlaying = true;
 
-		$("#previewicon-" + id).css('background','url(../images/play_pressed.png) no-repeat');
-		previewSound = soundManager.getSoundById(samples[id].sound);
-		previewSound.play({
-			autoLoad: true,
-			onfinish:function() {
-				previewPlaying = false;
-				$("#previewicon-" + id).css('background','url(../images/play_normal.png) no-repeat');
-			  }
-		});
-	} 
+        $("#previewicon-" + id).css('background','url(../images/play_pressed.png) no-repeat');
+        previewSound = soundManager.getSoundById(samples[id].sound);
+        previewSound.play({
+            autoLoad: true,
+            onfinish:function() {
+                previewPlaying = false;
+                $("#previewicon-" + id).css('background','url(../images/play_normal.png) no-repeat');
+            }
+        });
+    }
+}
+
+function remove(id) {
+    socket.emit('removeUsed', id);
 }

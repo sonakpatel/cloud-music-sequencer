@@ -307,7 +307,9 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('removeUsed', function(id) {
+        console.log("going to remove " + id);
 		if (musics[id] !== undefined && musics[id].id != null) {
+            console.log("removing " + id);
 			var title = musics[id].title;
 
 			musics[id].id = musics[id].title = musics[id].sound = null;
