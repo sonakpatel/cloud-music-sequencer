@@ -5,3 +5,5 @@ A collaborative real time application has been produced for a Thesis, with the a
 
 ### Live Site
 * [Cloud Music Sequencer - hosted on heroku](http://cloud-music.herokuapp.com/)
+
+![](http://i.imgur.com/86IN9UV.png?2)
